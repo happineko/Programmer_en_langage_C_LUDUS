@@ -1,3 +1,9 @@
 #fichier gitignore Programmer en langage C
-Programmer_en_langage_C_YB_V1_0/bin/Debug/Programmer_en_langage_C_YB_V1_0.exe
-Programmer_en_langage_C_YB_V1_0/obj/Debug/main.o
+#Programmer_en_langage_C_YB_V1_0/bin/Debug/Programmer_en_langage_C_YB_V1_0.exe
+#Programmer_en_langage_C_YB_V1_0/obj/Debug/main.o
+Programmer_en_langage_C_YB_V1_0/Programmer_en_langage_C_YB_V1_0.layout
+
+*.o
+*.exe
+*.depend
+*.layout
