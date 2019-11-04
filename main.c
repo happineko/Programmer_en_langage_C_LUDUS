@@ -8,11 +8,11 @@ void affTab(char grille[TAILLE][TAILLE]);
 int verifWTL(char grille[TAILLE][TAILLE]);
 int verifOOBX(int newX);
 int verifOOBY(int newY);
-//int verifOccPlace(char grille[TAILLE][TAILLE], int newX, int newY);
+
 
 int main()
 {
-    int newX=0, newY=0;
+    int newX=1, newY=1;
     char grille[TAILLE][TAILLE];
     int joueur = 1;
     int tour = 0;
@@ -21,43 +21,43 @@ int main()
     while((verifWTL(grille)== 0)&&(tour<=9)){
         if(joueur == 1){
             tour += 1;
-           // while(verifOccPlace(grille, newX, newY)== 1){
+            do{
                 printf("Ou voulez-vous placer le X ?\n");
                 printf("X : ");
                 scanf("%d",&newX);
-                verifOOBX(newX);
+                newX = verifOOBX(newX);
                 fflush(stdin);
                 printf("Y : ");
                 scanf("%d",&newY);
                 fflush(stdin);
-                verifOOBY(newY);
-           // }
+                newY = verifOOBY(newY);
+            }while(grille[newY][newX] != '_');
             grille[newY][newX]='X';
             joueur = 2;
         }else{
             tour += 1;
-           // while(verifOccPlace(grille, newX, newY)== 1){
+            do{
                 printf("Ou voulez-vous placer le O ?\n");
                 printf("X : ");
                 scanf("%d",&newX);
                 fflush(stdin);
-                verifOOBX(newX);
+                newX = verifOOBX(newX);
                 printf("Y : ");
                 scanf("%d",&newY);
                 fflush(stdin);
-                verifOOBY(newY);
-           // }
+                newY = verifOOBY(newY);
+            }while(grille[newY][newX] != '_');
             grille[newY][newX]='O';
             joueur = 1;
         }
-
+        system("cls");
         affTab(grille);
     }
     printf("GAME OVER");
     return 0;
 }
 
-//Procedure d'initialisation de la grille
+//Procedure d'initialisation de la grillenewY = verifOOBY(newY);
 void initTab(char grille[TAILLE][TAILLE]){
     int i,j;
     for(i=1;i<=TAILLE;i++){
@@ -166,14 +166,5 @@ int verifOOBY(int newY){
     return newY;
 }
 
-/*Verification emplacement deja pris
-int verifOccPlace(char grille[TAILLE][TAILLE], int newX, int newY){
-    int oqp = 0;
-    if(grille[newX][newY] != '_'){
-        printf("La place est deja occupe veuillez en choisir une autre\n");
-        oqp = 1;
-        }
 
-    return oqp;
-}*/
 
